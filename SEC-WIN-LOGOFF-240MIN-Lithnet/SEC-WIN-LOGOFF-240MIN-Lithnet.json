@@ -1,0 +1,35 @@
+{
+  "@odata.type": "#microsoft.graph.windows10CustomConfiguration",
+  "displayName": "SEC-WIN-LOGOFF-240MIN-Lithnet",
+  "description": "G3MIT Standard Security Baseline. Configures Lithnet Idle Logoff to automatically log off inactive Windows user sessions after 240 minutes of inactivity. A warning message is displayed 60 seconds before logoff. This policy is for session cleanup only; workstation locking is handled separately by SEC-WIN-LOCK-10MIN-STD using the CIS Interactive Logon Machine Inactivity Limit policy.",
+  "omaSettings": [
+    {
+      "@odata.type": "#microsoft.graph.omaSettingString",
+      "displayName": "ADMX Install - Lithnet Parent Category",
+      "description": "Installs the parent Lithnet ADMX category required by Lithnet IdleLogoff ADMX.",
+      "omaUri": "./Device/Vendor/MSFT/Policy/ConfigOperations/ADMXInstall/Lithnet/Policy/LithnetAdmx",
+      "value": "<policyDefinitions revision=\"1.0\" schemaVersion=\"1.0\">\n  <policyNamespaces>\n    <target prefix=\"Lithnet\" namespace=\"Lithnet\" />\n    <using prefix=\"windows\" namespace=\"Microsoft.Policies.Windows\" />\n  </policyNamespaces>\n  <supersededAdm fileName=\"\" />\n  <resources minRequiredRevision=\"1.0\" />\n  <categories>\n    <category name=\"CAT_300017F2_090D_4E59_A535_01350C2E0428\" displayName=\"$(string.CAT_300017F2_090D_4E59_A535_01350C2E0428)\" />\n  </categories>\n</policyDefinitions>"
+    },
+    {
+      "@odata.type": "#microsoft.graph.omaSettingString",
+      "displayName": "ADMX Install - Lithnet IdleLogoff",
+      "description": "Installs Lithnet IdleLogoff ADMX policy definitions.",
+      "omaUri": "./Device/Vendor/MSFT/Policy/ConfigOperations/ADMXInstall/LithnetIdleLogoff/Policy/LithnetIdleLogoffAdmx",
+      "value": "<?xml version=\"1.0\" encoding=\"utf-8\"?>\n<policyDefinitions\n\txmlns=\"http://www.microsoft.com/GroupPolicy/PolicyDefinitions\"\n\txmlns:xsd=\"http://www.w3.org/2001/XMLSchema\"\n\txmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\"\n\trevision=\"1.0\"\n\tschemaVersion=\"1.0\">\n\t<policyNamespaces>\n\t\t<target prefix=\"LithnetIdleLogoff\" namespace=\"Lithnet.IdleLogoff\" />\n\t\t<using prefix=\"lithnet\" namespace=\"Lithnet\" />\n\t</policyNamespaces>\n\t<supersededAdm fileName=\"\" />\n\t<resources minRequiredRevision=\"1.0\" />\n\t<supportedOn>\n\t\t<definitions>\n\t\t\t<definition name=\"TS_SUPPORTED_WindowsXP\" displayName=\"$(string.TS_SUPPORTED_WindowsXP)\" />\n\t\t</definitions>\n\t</supportedOn>\n\t<categories>\n\t\t<category name=\"cat_idle_logoff\" displayName=\"$(string.cat_idle_logoff)\">\n\t\t\t<parentCategory ref=\"lithnet:CAT_300017F2_090D_4E59_A535_01350C2E0428\" />\n\t\t</category>\n\t</categories>\n\t<policies>\n\n\t\t<policy name=\"pol_show_warning_message\"\n\t\t\t\tclass=\"Both\"\n\t\t\t\tdisplayName=\"$(string.pol_show_warning_message)\"\n\t\t\t\tpresentation=\"$(presentation.pol_show_warning_message)\"\n\t\t\t\tkey=\"Software\\Policies\\Lithnet\\IdleLogoff\"\n\t\t\t\tvalueName=\"WarningEnabled\"\n\t\t\t\texplainText=\"$(string.pol_show_warning_message_help)\">\n\t\t\t<parentCategory ref=\"cat_idle_logoff\" />\n\t\t\t<supportedOn ref=\"TS_SUPPORTED_WindowsXP\" />\n\t\t\t<elements>\n\t\t\t\t<decimal id=\"txt_warning_period\" key=\"Software\\Policies\\Lithnet\\IdleLogoff\" valueName=\"WarningPeriod\" minValue=\"10\" />\n\t\t\t\t<text id=\"txt_warning_message\" key=\"Software\\Policies\\Lithnet\\IdleLogoff\" valueName=\"WarningMessage\" required=\"false\"/>\n\t\t\t</elements>\n\t\t</policy>\n\n\t\t<policy name=\"pol_enable_idle_logoff\" \n\t\t\t\tclass=\"Both\" \n\t\t\t\tdisplayName=\"$(string.pol_enable_idle_logoff)\" \n\t\t\t\tpresentation=\"$(presentation.pol_enable_idle_logoff)\" \n\t\t\t\tkey=\"Software\\Policies\\Lithnet\\IdleLogoff\" \n\t\t\t\tvalueName=\"Enabled\"\n\t\t\t\texplainText=\"$(string.pol_enable_idle_logoff_help)\">\n\t\t\t<parentCategory ref=\"cat_idle_logoff\" />\n\t\t\t<supportedOn ref=\"TS_SUPPORTED_WindowsXP\" />\n\t\t\t<elements>\n\t\t\t\t<decimal id=\"txt_idle_limit\" key=\"Software\\Policies\\Lithnet\\IdleLogoff\" valueName=\"IdleLimit\" minValue=\"1\" />\n\t\t\t\t<boolean id=\"ck_ignore_display_requested\" key=\"Software\\Policies\\Lithnet\\IdleLogoff\" valueName=\"IgnoreDisplayRequested\">\n\t\t\t\t\t<trueValue>\n\t\t\t\t\t\t<decimal value=\"1\" />\n\t\t\t\t\t</trueValue>\n\t\t\t\t\t<falseValue>\n\t\t\t\t\t\t<decimal value=\"0\" />\n\t\t\t\t\t</falseValue>\n\t\t\t\t</boolean>\n\t\t\t\t<boolean id=\"ck_wait_for_input\" key=\"Software\\Policies\\Lithnet\\IdleLogoff\" valueName=\"WaitForInitialInput\">\n\t\t\t\t\t<trueValue>\n\t\t\t\t\t\t<decimal value=\"1\" />\n\t\t\t\t\t</trueValue>\n\t\t\t\t\t<falseValue>\n\t\t\t\t\t\t<decimal value=\"0\" />\n\t\t\t\t\t</falseValue>\n\t\t\t\t</boolean>\n\t\t\t\t<enum id=\"dd_idle_action\" key=\"Software\\Policies\\Lithnet\\IdleLogoff\" valueName=\"Action\">\n\t\t\t\t\t<item displayName=\"$(string.string_logoff)\">\n\t\t\t\t\t\t<value>\n\t\t\t\t\t\t\t<decimal value=\"0\" />\n\t\t\t\t\t\t</value>\n\t\t\t\t\t</item>\n\t\t\t\t\t<item displayName=\"$(string.string_reboot)\">\n\t\t\t\t\t\t<value>\n\t\t\t\t\t\t\t<decimal value=\"1\" />\n\t\t\t\t\t\t</value>\n\t\t\t\t\t</item>\n\t\t\t\t\t<item displayName=\"$(string.string_shutdown)\">\n\t\t\t\t\t\t<value>\n\t\t\t\t\t\t\t<decimal value=\"2\" />\n\t\t\t\t\t\t</value>\n\t\t\t\t\t</item>\n\t\t\t\t</enum>\n\t\t\t</elements>\n\t\t</policy>\n\t</policies>\n</policyDefinitions>"
+    },
+    {
+      "@odata.type": "#microsoft.graph.omaSettingString",
+      "displayName": "Lithnet IdleLogoff - Log off inactive users",
+      "description": "Enabled. IdleLimit=240, IgnoreDisplayRequested=0, WaitForInitialInput=1, Action=0 Logoff.",
+      "omaUri": "./User/Vendor/MSFT/Policy/Config/Lithnet.IdleLogoff~Policy~cat_idle_logoff/pol_enable_idle_logoff",
+      "value": "<enabled/><data id=\"txt_idle_limit\" value=\"240\"/><data id=\"ck_ignore_display_requested\" value=\"0\"/><data id=\"ck_wait_for_input\" value=\"1\"/><data id=\"dd_idle_action\" value=\"0\"/>"
+    },
+    {
+      "@odata.type": "#microsoft.graph.omaSettingString",
+      "displayName": "Lithnet IdleLogoff - Warning Message",
+      "description": "Enabled. WarningPeriod=60 seconds with G3MIT standard warning text.",
+      "omaUri": "./User/Vendor/MSFT/Policy/Config/Lithnet.IdleLogoff~Policy~cat_idle_logoff/pol_show_warning_message",
+      "value": "<enabled/><data id=\"txt_warning_period\" value=\"60\"/><data id=\"txt_warning_message\" value=\"This workstation has been inactive and will be logged off in {0}. Please move the mouse or press a key to continue your session.\"/>"
+    }
+  ]
+}

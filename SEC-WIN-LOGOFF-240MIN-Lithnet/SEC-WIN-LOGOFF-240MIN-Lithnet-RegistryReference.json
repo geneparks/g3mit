@@ -1,0 +1,43 @@
+{
+  "policyName": "SEC-WIN-LOGOFF-240MIN-Lithnet",
+  "description": "G3MIT Standard Security Baseline. Configures Lithnet Idle Logoff to automatically log off inactive Windows user sessions after 240 minutes of inactivity. A warning message is displayed 60 seconds before logoff. This policy is for session cleanup only; workstation locking is handled separately by SEC-WIN-LOCK-10MIN-STD using the CIS Interactive Logon Machine Inactivity Limit policy.",
+  "registryPath": "HKCU\\Software\\Policies\\Lithnet\\IdleLogoff",
+  "settings": {
+    "Enabled": {
+      "type": "REG_DWORD",
+      "value": 1
+    },
+    "IdleLimit": {
+      "type": "REG_DWORD",
+      "value": 240
+    },
+    "IgnoreDisplayRequested": {
+      "type": "REG_DWORD",
+      "value": 0
+    },
+    "WaitForInitialInput": {
+      "type": "REG_DWORD",
+      "value": 1
+    },
+    "Action": {
+      "type": "REG_DWORD",
+      "value": 0
+    },
+    "WarningEnabled": {
+      "type": "REG_DWORD",
+      "value": 1
+    },
+    "WarningPeriod": {
+      "type": "REG_DWORD",
+      "value": 60
+    },
+    "WarningMessage": {
+      "type": "REG_SZ",
+      "value": "This workstation has been inactive and will be logged off in {0}. Please move the mouse or press a key to continue your session."
+    }
+  },
+  "assignment": {
+    "include": "SEC-WIN-CISIG1-STD-Dynamic",
+    "exclude": "SEC-WIN-CISIG1-EXC-Assigned"
+  }
+}
