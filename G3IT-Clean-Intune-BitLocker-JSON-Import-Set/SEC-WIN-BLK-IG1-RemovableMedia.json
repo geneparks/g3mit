@@ -1,1 +1,51 @@
-﻿{"@odata.context":"https://graph.microsoft.com/beta/$metadata#deviceManagement/configurationPolicies/$entity","createdDateTime":"2026-07-05T18:59:09.4145548Z","creationSource":null,"description":"G3MIT Optional Compliance Policy. Prevents users from writing data to removable storage devices that are not protected by BitLocker. This policy is intended for regulated or security-sensitive environments where data loss prevention requirements exist. Deploy only when approved by the customer and after confirming operational impact with the client.","lastModifiedDateTime":"2026-07-05T18:59:09.4145548Z","name":"G3MIT - WIN - CISv4 - IG1 - BitLocker -Deny Write Access To Unencrypted Removable Drives - Optional Compliance","platforms":"windows10","priorityMetaData":null,"roleScopeTagIds":["0"],"settingCount":1,"technologies":"mdm","id":"37202eec-60b4-4ee5-9e7d-fbfe3bd8a008","templateReference":{"templateId":"","templateFamily":"none","templateDisplayName":null,"templateDisplayVersion":null},"settings":[{"id":"0","settingInstance":{"@odata.type":"#microsoft.graph.deviceManagementConfigurationChoiceSettingInstance","settingDefinitionId":"device_vendor_msft_bitlocker_removabledrivesrequireencryption","settingInstanceTemplateReference":null,"auditRuleInformation":null,"choiceSettingValue":{"settingValueTemplateReference":null,"value":"device_vendor_msft_bitlocker_removabledrivesrequireencryption_1","children":[{"@odata.type":"#microsoft.graph.deviceManagementConfigurationChoiceSettingInstance","settingDefinitionId":"device_vendor_msft_bitlocker_removabledrivesrequireencryption_rdvcrossorg","settingInstanceTemplateReference":null,"auditRuleInformation":null,"choiceSettingValue":{"settingValueTemplateReference":null,"value":"device_vendor_msft_bitlocker_removabledrivesrequireencryption_rdvcrossorg_0","children":[]}}]}}}]}
+{
+    "@odata.context": "https://graph.microsoft.com/beta/$metadata#deviceManagement/configurationPolicies/$entity",
+    "createdDateTime": "2026-07-05T18:59:09.4145548Z",
+    "creationSource": null,
+    "description": "G3MIT Optional Compliance Policy. Prevents users from writing data to removable storage devices that are not protected by BitLocker. This policy is intended for regulated or security-sensitive environments where data loss prevention requirements exist. Deploy only when approved by the customer and after confirming operational impact with the client.",
+    "lastModifiedDateTime": "2026-07-05T18:59:09.4145548Z",
+    "name": "G3MIT - WIN - CISv4 - IG1 - BitLocker -Deny Write Access To Unencrypted Removable Drives - Optional Compliance",
+    "platforms": "windows10",
+    "priorityMetaData": null,
+    "roleScopeTagIds": [
+        "0"
+    ],
+    "settingCount": 1,
+    "technologies": "mdm",
+    "id": "37202eec-60b4-4ee5-9e7d-fbfe3bd8a008",
+    "templateReference": {
+        "templateId": "",
+        "templateFamily": "none",
+        "templateDisplayName": null,
+        "templateDisplayVersion": null
+    },
+    "settings": [
+        {
+            "id": "0",
+            "settingInstance": {
+                "@odata.type": "#microsoft.graph.deviceManagementConfigurationChoiceSettingInstance",
+                "settingDefinitionId": "device_vendor_msft_bitlocker_removabledrivesrequireencryption",
+                "settingInstanceTemplateReference": null,
+                "auditRuleInformation": null,
+                "choiceSettingValue": {
+                    "settingValueTemplateReference": null,
+                    "value": "device_vendor_msft_bitlocker_removabledrivesrequireencryption_1",
+                    "children": [
+                        {
+                            "@odata.type": "#microsoft.graph.deviceManagementConfigurationChoiceSettingInstance",
+                            "settingDefinitionId": "device_vendor_msft_bitlocker_removabledrivesrequireencryption_rdvcrossorg",
+                            "settingInstanceTemplateReference": null,
+                            "auditRuleInformation": null,
+                            "choiceSettingValue": {
+                                "settingValueTemplateReference": null,
+                                "value": "device_vendor_msft_bitlocker_removabledrivesrequireencryption_rdvcrossorg_0",
+                                "children": [
+                                ]
+                            }
+                        }
+                    ]
+                }
+            }
+        }
+    ]
+}
